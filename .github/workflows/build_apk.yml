@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -53,3 +55,17 @@ jobs:
           path: build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error
           retention-days: 7
+
+      - name: Create or Update 'Latest' GitHub Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Delete the old release and tag if they exist
+          gh release delete latest --cleanup-tag -y || true
+          
+          # Create a new release with the newly built APK
+          gh release create latest \
+            --title "Latest Build" \
+            --notes "Automated release of the latest main branch code." \
+            build/app/outputs/flutter-apk/app-release.apk
