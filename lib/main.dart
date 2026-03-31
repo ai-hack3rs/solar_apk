@@ -44,7 +44,7 @@ class SolarCalculatorApp extends StatelessWidget {
         textTheme: GoogleFonts.outfitTextTheme(
           ThemeData.dark().textTheme,
         ),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           color: const Color(0xFF1E1E35),
           elevation: 0,
           shape: RoundedRectangleBorder(

@@ -55,7 +55,7 @@ class _SunPainter extends CustomPainter {
     final glowPaint = Paint()
       ..shader = RadialGradient(
         colors: [
-          const Color(0xFFFFD54F).withOpacity(0.3),
+          const Color(0xFFFFD54F).withValues(alpha: 0.3),
           Colors.transparent,
         ],
       ).createShader(Rect.fromCircle(center: center, radius: radius));
@@ -63,7 +63,7 @@ class _SunPainter extends CustomPainter {
 
     // Draw rays
     final rayPaint = Paint()
-      ..color = const Color(0xFFFFB300).withOpacity(0.7)
+      ..color = const Color(0xFFFFB300).withValues(alpha: 0.7)
       ..strokeWidth = 2.5
       ..strokeCap = StrokeCap.round;
 
@@ -135,7 +135,7 @@ class _PulsingGlowState extends State<PulsingGlow>
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: widget.glowColor.withOpacity(_anim.value * 0.3),
+              color: widget.glowColor.withValues(alpha: _anim.value * 0.3),
               blurRadius: 20,
               spreadRadius: 2,
             )

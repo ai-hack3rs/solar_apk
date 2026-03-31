@@ -111,10 +111,10 @@ class _HeroCard extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFFB300).withOpacity(0.15),
+                    color: const Color(0xFFFFB300).withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                        color: const Color(0xFFFFB300).withOpacity(0.3)),
+                        color: const Color(0xFFFFB300).withValues(alpha: 0.3)),
                   ),
                   child: const Text(
                     '☀️ Clean Energy • 💰 Save Money • 🌍 Save Planet',
@@ -196,7 +196,7 @@ class _StatChip extends StatelessWidget {
         decoration: BoxDecoration(
           color: const Color(0xFF1E1E35),
           borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: color.withOpacity(0.2)),
+          border: Border.all(color: color.withValues(alpha: 0.2)),
         ),
         child: Column(
           children: [
@@ -309,7 +309,7 @@ class _FeatureCard extends StatelessWidget {
               colors: data.gradient,
             ),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: data.borderColor.withOpacity(0.3)),
+            border: Border.all(color: data.borderColor.withValues(alpha: 0.3)),
           ),
           child: Row(
             children: [
@@ -317,7 +317,7 @@ class _FeatureCard extends StatelessWidget {
                 width: 56,
                 height: 56,
                 decoration: BoxDecoration(
-                  color: data.borderColor.withOpacity(0.15),
+                  color: data.borderColor.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Icon(data.icon, color: data.borderColor, size: 28),
@@ -350,7 +350,7 @@ class _FeatureCard extends StatelessWidget {
               ),
               Icon(
                 Icons.arrow_forward_ios_rounded,
-                color: data.borderColor.withOpacity(0.6),
+                color: data.borderColor.withValues(alpha: 0.6),
                 size: 16,
               ),
             ],
