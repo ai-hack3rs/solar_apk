@@ -25,10 +25,10 @@ class _PanelCalculatorScreenState extends State<PanelCalculatorScreen> {
           icon: const Icon(Icons.arrow_back_ios_new_rounded, color: Color(0xFFFFB300)),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Row(children: [
-          const Icon(Icons.wb_sunny_rounded, color: Color(0xFFFFB300), size: 22),
-          const SizedBox(width: 8),
-          const Text(
+        title: const Row(children: [
+          Icon(Icons.wb_sunny_rounded, color: Color(0xFFFFB300), size: 22),
+          SizedBox(width: 8),
+          Text(
             'Panel Output',
             style: TextStyle(
               color: Colors.white,
@@ -54,11 +54,11 @@ class _PanelCalculatorScreenState extends State<PanelCalculatorScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                  const Row(
                     children: [
-                      const AnimatedSun(size: 28),
-                      const SizedBox(width: 10),
-                      const SectionHeader(
+                      AnimatedSun(size: 28),
+                      SizedBox(width: 10),
+                      SectionHeader(
                         title: 'System Parameters',
                         subtitle: 'Configure your solar setup',
                       ),

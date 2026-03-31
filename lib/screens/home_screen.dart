@@ -38,11 +38,11 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: const Color(0xFF0F0F1E),
       pinned: true,
       expandedHeight: 0,
-      title: Row(
+      title: const Row(
         children: [
-          const AnimatedSun(size: 32),
-          const SizedBox(width: 10),
-          const Text(
+          AnimatedSun(size: 32),
+          SizedBox(width: 10),
+          Text(
             'Solar Calculator',
             style: TextStyle(
               fontSize: 20,
@@ -230,21 +230,21 @@ class _FeatureGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cards = [
-      _FeatureCardData(
+      const _FeatureCardData(
         title: 'Panel Output\nCalculator',
         subtitle: 'Daily, monthly & annual kWh generation',
         icon: Icons.wb_sunny_rounded,
-        gradient: const [Color(0xFF2A1800), Color(0xFF1E1E35)],
-        borderColor: const Color(0xFFFFB300),
-        screen: const PanelCalculatorScreen(),
+        gradient: [Color(0xFF2A1800), Color(0xFF1E1E35)],
+        borderColor: Color(0xFFFFB300),
+        screen: PanelCalculatorScreen(),
       ),
-      _FeatureCardData(
+      const _FeatureCardData(
         title: 'Savings &\nPayback',
         subtitle: 'ROI, payback period & lifetime savings',
         icon: Icons.savings_rounded,
-        gradient: const [Color(0xFF001A10), Color(0xFF1E1E35)],
-        borderColor: const Color(0xFF66BB6A),
-        screen: const SavingsCalculatorScreen(),
+        gradient: [Color(0xFF001A10), Color(0xFF1E1E35)],
+        borderColor: Color(0xFF66BB6A),
+        screen: SavingsCalculatorScreen(),
       ),
     ];
 

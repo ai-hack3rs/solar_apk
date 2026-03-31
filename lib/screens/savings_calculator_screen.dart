@@ -133,16 +133,16 @@ class _SavingsCalculatorScreenState extends State<SavingsCalculatorScreen> {
                           fontWeight: FontWeight.w700,
                           fontSize: 16,
                         ),
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           prefixText: '₹ ',
-                          prefixStyle: const TextStyle(
+                          prefixStyle: TextStyle(
                             color: Color(0xFF66BB6A),
                             fontWeight: FontWeight.w700,
                           ),
                           hintText: '350000',
                           helperText:
                               'India avg: ₹40,000–70,000 per kW installed',
-                          helperStyle: const TextStyle(
+                          helperStyle: TextStyle(
                             color: Color(0xFF666680),
                             fontSize: 11,
                           ),
@@ -332,9 +332,9 @@ class _PaybackTimeline extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 4),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             Text('Year 0', style: TextStyle(fontSize: 10, color: Color(0xFF666680))),
             Text('Year 25', style: TextStyle(fontSize: 10, color: Color(0xFF666680))),
           ],

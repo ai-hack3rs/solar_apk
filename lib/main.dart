@@ -36,9 +36,7 @@ class SolarCalculatorApp extends StatelessWidget {
           primary: const Color(0xFFFFB300),
           secondary: const Color(0xFFFF6F00),
           surface: const Color(0xFF1A1A2E),
-          background: const Color(0xFF0F0F1E),
           onPrimary: Colors.black,
-          onBackground: Colors.white,
         ),
         scaffoldBackgroundColor: const Color(0xFF0F0F1E),
         textTheme: GoogleFonts.outfitTextTheme(
