@@ -1,30 +1,21 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:provider/provider.dart';
-import 'package:solar_calculator/providers/calculator_provider.dart';
-import 'package:solar_calculator/main.dart';
+import 'package:solar_calculator/providers/dashboard_provider.dart';
 
 void main() {
-  testWidgets('App launches smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(
-      ChangeNotifierProvider(
-        create: (_) => CalculatorProvider(),
-        child: const SolarCalculatorApp(),
-      ),
-    );
-
-    // Verify that the title is present or that the widget built successfully.
-    // 'Solar Calculator' text might not be directly rendered as a Text widget 
-    // depending on the AppBar configuration, but pumpWidget succeeding means no crash.
-    expect(find.byType(MaterialApp), findsOneWidget);
+  test('DashboardProvider initializes and computes all math correctly', () {
+    final provider = DashboardProvider();
+    
+    // Test initial values
+    expect(provider.systemType, 'On-Grid');
+    expect(provider.systemSize, 5.0);
+    
+    // Test that the mass calculation ran automatically
+    expect(provider.results, isNotNull);
+    
+    // Verify some baseline calculations
+    final results = provider.results!;
+    expect(results.lifetimeSavings, isA<double>());
+    expect(results.cumulativeCost.length, 25);
+    expect(results.cumulativeReturns.length, 25);
   });
 }

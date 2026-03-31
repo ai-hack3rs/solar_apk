@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'providers/calculator_provider.dart';
-import 'screens/home_screen.dart';
+import 'package:provider/provider.dart';
 
-void main() async {
+import 'providers/dashboard_provider.dart';
+import 'screens/dashboard_screen.dart';
+import 'widgets/app_styles.dart';
+
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+    ),
+  );
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => CalculatorProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => DashboardProvider()),
+      ],
       child: const SolarCalculatorApp(),
     ),
   );
@@ -25,66 +31,28 @@ class SolarCalculatorApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Solar Calculator',
+      title: 'SolarBharat Calculator',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFFFB300),
-          brightness: Brightness.dark,
-          primary: const Color(0xFFFFB300),
-          secondary: const Color(0xFFFF6F00),
-          surface: const Color(0xFF1A1A2E),
-          onPrimary: Colors.black,
+        scaffoldBackgroundColor: AppColors.background,
+        colorScheme: const ColorScheme.dark(
+          primary: AppColors.primary,
+          secondary: AppColors.gold,
+          surface: AppColors.background,
+          error: AppColors.danger,
         ),
-        scaffoldBackgroundColor: const Color(0xFF0F0F1E),
-        textTheme: GoogleFonts.outfitTextTheme(
-          ThemeData.dark().textTheme,
+        textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme).apply(
+          bodyColor: AppColors.textBody,
+          displayColor: Colors.white,
         ),
-        cardTheme: CardThemeData(
-          color: const Color(0xFF1E1E35),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
           elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-        ),
-        inputDecorationTheme: InputDecorationTheme(
-          filled: true,
-          fillColor: const Color(0xFF252540),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
-            borderSide: BorderSide.none,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
-            borderSide: const BorderSide(color: Color(0xFFFFB300), width: 2),
-          ),
-          labelStyle: const TextStyle(color: Color(0xFFAAAAAA)),
-          hintStyle: const TextStyle(color: Color(0xFF666680)),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFFFFB300),
-            foregroundColor: Colors.black,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(14),
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-            textStyle: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
-        sliderTheme: const SliderThemeData(
-          activeTrackColor: Color(0xFFFFB300),
-          thumbColor: Color(0xFFFFB300),
-          overlayColor: Color(0x33FFB300),
-          inactiveTrackColor: Color(0xFF333355),
         ),
       ),
-      home: const HomeScreen(),
+      home: const DashboardScreen(),
     );
   }
 }
